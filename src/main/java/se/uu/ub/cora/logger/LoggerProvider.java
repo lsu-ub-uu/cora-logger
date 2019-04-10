@@ -19,6 +19,8 @@
 
 package se.uu.ub.cora.logger;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ServiceLoader;
 
 import se.uu.ub.cora.logger.starter.LoggerModuleStarter;
@@ -28,6 +30,7 @@ public class LoggerProvider {
 
 	private static LoggerFactory loggerFactory;
 	private static LoggerModuleStarter loggerModuleStarter = new LoggerModuleStarterImp();
+	private static Map<String, Logger> startedLoggers = new HashMap<>();
 
 	private LoggerProvider() {
 		// not called
@@ -44,6 +47,9 @@ public class LoggerProvider {
 	 */
 	public static Logger getLoggerForClass(Class<? extends Object> javaClass) {
 		ensureLoggerFactoryIsSet();
+		// String className = javaClass.getName();
+		// ensureLoggerIsFactored(javaClass, className);
+		// return startedLoggers.get(className);
 		return loggerFactory.factorForClass(javaClass);
 	}
 
@@ -58,6 +64,14 @@ public class LoggerProvider {
 				.load(LoggerFactory.class);
 		loggerModuleStarter.startUsingLoggerFactoryImplementations(loggerFactoryImplementations);
 		loggerFactory = loggerModuleStarter.getLoggerFactory();
+	}
+
+	private static void ensureLoggerIsFactored(Class<? extends Object> javaClass,
+			String className) {
+		if (!startedLoggers.containsKey(className)) {
+			Logger loggerForClass = loggerFactory.factorForClass(javaClass);
+			startedLoggers.put(className, loggerForClass);
+		}
 	}
 
 	/**

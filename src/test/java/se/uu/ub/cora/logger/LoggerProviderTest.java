@@ -62,6 +62,17 @@ public class LoggerProviderTest {
 		assertEquals(log, loggerFactory.factored);
 	}
 
+	// @Test
+	// public void testSameLoggerIsReturnedForMultipleGetLoggerCalls() throws Exception {
+	// LoggerFactorySpy loggerFactory = new LoggerFactorySpy();
+	// LoggerProvider.setLoggerFactory(loggerFactory);
+	// Logger log = LoggerProvider.getLoggerForClass(String.class);
+	// Logger log2 = LoggerProvider.getLoggerForClass(String.class);
+	// Logger log3 = LoggerProvider.getLoggerForClass(String.class);
+	// assertSame(log, log2);
+	// assertSame(log2, log3);
+	// }
+
 	@Test
 	public void testNonExceptionThrowingStartup() throws Exception {
 		LoggerModuleStarterSpy starter = startLoggerModuleInitializerWithStarterSpy();

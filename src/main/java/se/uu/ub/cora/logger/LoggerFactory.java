@@ -22,7 +22,8 @@ package se.uu.ub.cora.logger;
 public interface LoggerFactory {
 
 	/**
-	 * Factors a Logger for the supplied class.
+	 * Factors a Logger for the supplied class. The implementation should handle multiple factor
+	 * calls for the same class as is appropriate for the implementation.
 	 * 
 	 * @param javaClass
 	 *            to get a Logger for

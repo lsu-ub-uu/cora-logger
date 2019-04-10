@@ -19,6 +19,95 @@
 
 package se.uu.ub.cora.logger;
 
-public interface Logger {
+import java.util.function.Supplier;
 
+public interface Logger {
+	/**
+	 * Severe errors that cause the application to malfunction.
+	 * 
+	 * @param message
+	 */
+	public void logFatalUsingMessage(String message);
+
+	/**
+	 * Severe errors that cause the application to malfunction.
+	 * 
+	 * @param message
+	 * @param exception
+	 */
+	public void logFatalUsingMessageAndException(String message, Exception exception);
+
+	/**
+	 * Runtime errors that cause problems for requests to the application, but not the entire
+	 * application.
+	 * 
+	 * @param message
+	 */
+	public void logErrorUsingMessage(String message);
+
+	/**
+	 * Runtime errors that cause problems for requests to the application, but not the entire
+	 * application.
+	 * 
+	 * @param message
+	 * @param exception
+	 */
+	public void logErrorUsingMessageAndException(String message, Exception exception);
+
+	/**
+	 * Runtime events that are unexpected or undesired but are handled by the application and does
+	 * not cause errors.
+	 * 
+	 * @param message
+	 */
+	public void logWarnUsingMessage(String message);
+
+	/**
+	 * Runtime events that are unexpected or undesired but are handled by the application and does
+	 * not cause errors.
+	 * 
+	 * @param message
+	 * @param exception
+	 */
+	public void logWarnUsingMessageAndException(String message, Exception exception);
+
+	/**
+	 * Runtime events and configurations that are expected and give useful information about the
+	 * application, such as the currently active configuration parameters, services starting /
+	 * stopping etc.
+	 * 
+	 * @param message
+	 */
+	public void logInfoUsingMessage(String message);
+
+	/**
+	 * Information about data flow through the application, normally used for debugging purposes.
+	 * 
+	 * @param message
+	 */
+	public void logDebugUsingMessage(String message);
+
+	/**
+	 * Information about data flow through the application, normally used for debugging purposes.The
+	 * supplier is only called if trace level is enabled
+	 * 
+	 * @return
+	 */
+	public void logDebugUsingMessageSupplier(Supplier<String> messageSupplier);
+
+	/**
+	 * Extremely detailed information about data flow through the application, normally used for
+	 * debugging purposes.
+	 * 
+	 * @param message
+	 */
+	public void logTraceUsingMessage(String message);
+
+	/**
+	 * Extremely detailed information about data flow through the application, normally used for
+	 * debugging purposes. The supplier is only called if trace level is enabled.
+	 * 
+	 * @param messageSupplier
+	 */
+	public void logTraceUsingMessageSupplier(Supplier<String> messageSupplier);
 }

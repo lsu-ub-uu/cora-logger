@@ -19,6 +19,74 @@
 
 package se.uu.ub.cora.logger;
 
+import java.util.function.Supplier;
+
 public class LoggerSpy implements Logger {
+
+	@Override
+	public void logFatalUsingMessage(String message) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void logFatalUsingMessageAndException(String message, Exception exception) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void logErrorUsingMessage(String message) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void logErrorUsingMessageAndException(String message, Exception exception) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void logWarnUsingMessage(String message) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void logWarnUsingMessageAndException(String message, Exception exception) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void logInfoUsingMessage(String message) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void logDebugUsingMessage(String message) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void logDebugUsingMessageSupplier(Supplier<String> messageSupplier) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void logTraceUsingMessage(String message) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void logTraceUsingMessageSupplier(Supplier<String> messageSupplier) {
+		// TODO Auto-generated method stub
+
+	}
 
 }
