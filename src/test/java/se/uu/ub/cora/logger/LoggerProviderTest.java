@@ -24,6 +24,7 @@ import static org.testng.Assert.assertTrue;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 import org.testng.annotations.BeforeMethod;
@@ -53,25 +54,20 @@ public class LoggerProviderTest {
 	}
 
 	@Test
-	public void testLogger() throws Exception {
-		LoggerFactorySpy loggerFactory = new LoggerFactorySpy();
-		LoggerProvider.setLoggerFactory(loggerFactory);
+	public void testLoggerProviderUsesExistingLoggerFactory() throws Exception {
+		LoggerFactorySpy loggerFactorySpy = new LoggerFactorySpy();
+		LoggerProvider.setLoggerFactory(loggerFactorySpy);
 		Logger log = LoggerProvider.getLoggerForClass(String.class);
 
-		assertEquals(loggerFactory.classNames.get(0), String.class.getName());
-		assertEquals(log, loggerFactory.factored);
+		assertEquals(loggerFactorySpy.classNames.get(0), String.class.getName());
+		assertEquals(log, loggerFactorySpy.factored);
 	}
 
-	// @Test
-	// public void testSameLoggerIsReturnedForMultipleGetLoggerCalls() throws Exception {
-	// LoggerFactorySpy loggerFactory = new LoggerFactorySpy();
-	// LoggerProvider.setLoggerFactory(loggerFactory);
-	// Logger log = LoggerProvider.getLoggerForClass(String.class);
-	// Logger log2 = LoggerProvider.getLoggerForClass(String.class);
-	// Logger log3 = LoggerProvider.getLoggerForClass(String.class);
-	// assertSame(log, log2);
-	// assertSame(log2, log3);
-	// }
+	@Test
+	public void testStartingOfLoggerFactoryCanOnlyBeDoneByOneThreadAtATime() throws Exception {
+		Method declaredMethod = LoggerProvider.class.getDeclaredMethod("ensureLoggerFactoryIsSet");
+		assertTrue(Modifier.isSynchronized(declaredMethod.getModifiers()));
+	}
 
 	@Test
 	public void testNonExceptionThrowingStartup() throws Exception {

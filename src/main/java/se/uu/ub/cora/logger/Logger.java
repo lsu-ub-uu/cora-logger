@@ -89,9 +89,10 @@ public interface Logger {
 
 	/**
 	 * Information about data flow through the application, normally used for debugging purposes.The
-	 * supplier is only called if trace level is enabled
+	 * supplier is only called if trace level is enabled, and is expected to create a String that
+	 * can be used as message as if {@link Logger#logDebugUsingMessage(String)} had been called.
 	 * 
-	 * @return
+	 * @param messageSupplier
 	 */
 	public void logDebugUsingMessageSupplier(Supplier<String> messageSupplier);
 
