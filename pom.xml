@@ -23,9 +23,6 @@
 
 	<name>logger</name>
 
-	<properties>
-	</properties>
-
 	<scm>
 		<connection>scm:git:https://github.com/lsu-ub-uu/cora-logger.git</connection>
 		<developerConnection>scm:git:https://github.com/lsu-ub-uu/cora-logger.git</developerConnection>
