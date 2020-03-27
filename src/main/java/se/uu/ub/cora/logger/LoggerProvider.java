@@ -24,6 +24,13 @@ import java.util.ServiceLoader;
 import se.uu.ub.cora.logger.starter.LoggerModuleStarter;
 import se.uu.ub.cora.logger.starter.LoggerModuleStarterImp;
 
+/**
+ * LoggerProvider provides access to the instances of the currently plugged in logger implementation
+ * through the {@link #getLoggerForClass(Class)} method.
+ * <p>
+ * The {@link #setLoggerFactory(LoggerFactory)} method is provided to enable testing logging from
+ * other classes, by setting a LoggerFactory spy or similar.
+ */
 public class LoggerProvider {
 
 	private static LoggerFactory loggerFactory;
@@ -64,7 +71,7 @@ public class LoggerProvider {
 	 * Sets a LoggerFactory that will be used to factor loggers for Classes. This possibility to set
 	 * a LoggerFactory is provided to enable testing of logging in other classes and is not intented
 	 * to be used in production. The LoggerFactory to use should be provided through an
-	 * implementation of LoggerFactory in a seperate java module.
+	 * implementation of {@link LoggerFactory} in a seperate java module.
 	 * 
 	 * @param loggerFactory
 	 *            A LoggerFactory to use to create loggers for testing

@@ -19,15 +19,19 @@
 
 package se.uu.ub.cora.logger;
 
+/**
+ * This LoggerFactory is expected to be implemented by modules that provides implementations for
+ * logging in a Cora based system, to factor implemented Logger instances.
+ */
 public interface LoggerFactory {
 
 	/**
-	 * Factors a Logger for the supplied class. The implementation should handle multiple factor
+	 * Factors a Logger for the supplied class. The implementation SHOULD handle multiple factor
 	 * calls for the same class as is appropriate for the implementation.
 	 * 
 	 * @param javaClass
 	 *            to get a Logger for
-	 * @return Logger for the supplied class
+	 * @return {@link Logger} for the supplied class
 	 */
 	Logger factorForClass(Class<? extends Object> javaClass);
 

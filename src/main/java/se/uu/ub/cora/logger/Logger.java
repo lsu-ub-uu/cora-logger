@@ -21,6 +21,11 @@ package se.uu.ub.cora.logger;
 
 import java.util.function.Supplier;
 
+/**
+ * This Logger interface defines methods to logg messages and exceptions from a Cora based system.
+ * How these logg messages are handled is entierly up to the implementation.
+ *
+ */
 public interface Logger {
 	/**
 	 * Severe errors that cause the application to malfunction.
