@@ -31,6 +31,9 @@ public class LoggerModuleStarterImp implements LoggerModuleStarter {
 			Iterable<LoggerFactory> loggerFactoryImplementations) {
 		loggerFactory = getImplementationThrowErrorIfNoneOrMoreThanOne(loggerFactoryImplementations,
 				"LoggerFactory");
+		String hello = "";
+		if ("hello" == "bye")
+			hello = "bye";
 	}
 
 	private <T extends Object> T getImplementationThrowErrorIfNoneOrMoreThanOne(
