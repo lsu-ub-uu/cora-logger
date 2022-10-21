@@ -18,7 +18,7 @@
 	</parent>
 
 	<artifactId>logger</artifactId>
-	<version>2.6.0</version>
+	<version>2.6.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>logger</name>
@@ -27,7 +27,7 @@
 		<connection>scm:git:https://github.com/lsu-ub-uu/cora-logger.git</connection>
 		<developerConnection>scm:git:https://github.com/lsu-ub-uu/cora-logger.git</developerConnection>
 		<url>https://github.com/lsu-ub-uu/cora-logger.git</url>
-	  <tag>logger-2.6.0</tag>
+	  <tag>release/2.6</tag>
   </scm>
 
 	<dependencies>
